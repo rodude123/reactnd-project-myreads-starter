@@ -14,6 +14,11 @@ class BooksApp extends React.Component
 		this.getBooks();
 	}
 	
+	componentDidUpdate(prevProps, prevState, snapshot)
+	{
+		this.getBooks();
+	}
+	
 	getBooks = () =>
 	{
 		bpi.getAll().then(books =>
@@ -54,7 +59,10 @@ class BooksApp extends React.Component
 							</div>
 						</div>
 					)}/>
-					<Route path="/search" component={SearchBooks}/>
+					<Route path="/search" render={() =>
+					(
+						<SearchBooks currBooks={this.state.books}/>
+					)}/>
 			</div>
 		)
 	}

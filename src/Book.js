@@ -30,7 +30,7 @@ class Book extends Component
 								backgroundImage: `url("${imageLinks.smallThumbnail}")`
 							}}/>
 						<div className="book-shelf-changer">
-							<select onChange={this.onShelfChange} value={shelf ? shelf : "none"}>
+							<select onChange={this.props.handleSearchChange ? this.props.handleSearchChange : this.onShelfChange} value={shelf ? shelf : "none"}>
 								<option value="move" disabled>Move to...</option>
 								<option value="currentlyReading">Currently Reading</option>
 								<option value="wantToRead">Want to Read</option>
@@ -40,7 +40,7 @@ class Book extends Component
 						</div>
 					</div>
 					<div className="book-title">{title}</div>
-					<div className="book-authors">{authors.join(", ")}</div>
+					<div className="book-authors">{authors ? authors.join(", ") : ""}</div>
 				</div>
 	};
 }

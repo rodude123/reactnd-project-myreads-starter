@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
-import PropTypes from "prop-types";
 import * as bpi from "./BooksAPI"
 import Book from "./Book";
-import {getAll} from "./BooksAPI";
 
 class SearchBooks extends Component
 {
@@ -12,17 +10,17 @@ class SearchBooks extends Component
 	
 	search = e =>
 	{
+		const {currBooks} = this.props;
 		let searchTerm = e.target.value
-		bpi.search(searchTerm, 20).then(data =>
+		bpi.search(searchTerm).then(data =>
 		{
-			let currBooks = [];
-			getAll().then(books =>{ currBooks = books})
 			if (data !== undefined && data.error === undefined)
 			{
 				let newData = []
 				data.map(item1 =>
 				{
 					const found = currBooks.filter(cb => cb.id === item1.id)
+					console.log(found)
 					if(found.length !== 1)
 					{
 						newData.push(item1)
@@ -55,7 +53,7 @@ class SearchBooks extends Component
 						{
 							filteredBooks && query !== "" && filteredBooks.map( book =>
 							{
-								return book && <li key={book.id}><Book book={book} getBooks={() => {}}/></li>
+								return book && <li key={book.id}><Book book={book} handleSearchChange={null} getBooks={null}/></li>
 							})
 						}
 						</ol>
