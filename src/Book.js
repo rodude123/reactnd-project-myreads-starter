@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import * as bpi from './BooksAPI'
 
 class Book extends Component
 {
-	static propTypes = {book: PropTypes.object.isRequired, getBooks: PropTypes.func.isRequired};
+	// static propTypes = {book: PropTypes.object.isRequired, getBooks: PropTypes.func.isRequired};
 	state = {changed: ""}
 	onShelfChange = e =>
 	{
@@ -27,7 +27,7 @@ class Book extends Component
 							{{
 								width: 128,
 								height: 193,
-								backgroundImage: `url("${imageLinks.smallThumbnail}")`
+								backgroundImage: `url("${imageLinks.smallThumbnail ? imageLinks.smallThumbnail : "http://lorempixel.com/128/193/"}")`
 							}}/>
 						<div className="book-shelf-changer">
 							<select onChange={this.props.handleSearchChange ? this.props.handleSearchChange : this.onShelfChange} value={shelf ? shelf : "none"}>

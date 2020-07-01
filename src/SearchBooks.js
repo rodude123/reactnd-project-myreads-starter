@@ -36,6 +36,11 @@ class SearchBooks extends Component
 		})
 	}
 	
+	handleSearchChange = () =>
+	{
+		
+	}
+	
 	render()
 	{
 		const {query, filteredBooks} = this.state;
@@ -45,7 +50,7 @@ class SearchBooks extends Component
 					<div className="search-books-bar">
 						<Link className="close-search" to="/">Close</Link>
 						<div className="search-books-input-wrapper">
-							<input type="text" placeholder="Search by title or author" onChange={this.search}/>
+							<input id="search" type="text" placeholder="Search by title or author" onChange={this.search}/>
 						</div>
 					</div>
 					<div className="search-books-results">
@@ -53,7 +58,7 @@ class SearchBooks extends Component
 						{
 							filteredBooks && query !== "" && filteredBooks.map( book =>
 							{
-								return book && <li key={book.id}><Book book={book} handleSearchChange={null} getBooks={null}/></li>
+								return book && <li key={book.id}><Book book={book} handleSearchChange={this.handleSearchChange()}/></li>
 							})
 						}
 						</ol>
