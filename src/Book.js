@@ -9,7 +9,7 @@ class Book extends Component
 	onShelfChange = e =>
 	{
 		const {book, getBooks} = this.props;
-		bpi.update(book, e.target.value).then(res =>
+		bpi.update(book, e.target.value).then(() =>
 		{
 			if (getBooks)
 			{
