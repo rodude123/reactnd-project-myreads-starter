@@ -21,13 +21,14 @@ class Book extends Component
 	render()
 	{
 		const {imageLinks, authors, id, title, shelf} = this.props.book;
+		const image = imageLinks && imageLinks.smallThumbnail ? imageLinks.smallThumbnail : "http://lorempixel.com/128/193/"
 		return <div key={id} className="book">
 					<div className="book-top">
 						<div className="book-cover" style=
 							{{
 								width: 128,
 								height: 193,
-								backgroundImage: `url("${imageLinks.smallThumbnail ? imageLinks.smallThumbnail : "http://lorempixel.com/128/193/"}")`
+								backgroundImage: `url("${image}")`
 							}}/>
 						<div className="book-shelf-changer">
 							<select onChange={this.props.handleSearchChange ? this.props.handleSearchChange : this.onShelfChange} value={shelf ? shelf : "none"}>

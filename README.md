@@ -1,6 +1,6 @@
 # MyReads Project
 
-This is my implementation of the MyReads Project. I used components and 
+This is my implementation of the MyReads Project. I used components and props to make this work. This is a web application that handle a personal library, with separate selves for books
 
 ## How to get started
 
